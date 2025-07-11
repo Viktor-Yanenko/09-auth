@@ -1,6 +1,7 @@
 // import axios from "axios";
 import { nextServer } from "./api";
 import { type NewNoteData, type Note } from "../../types/note";
+import { User } from "../../types/user";
 
 const API_KEY = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
 // const API_URL = 'https://notehub-public.goit.study/api/notes';
@@ -63,4 +64,18 @@ export async function fetchNoteById(id: number): Promise<Note> {
         headers: HEADERS,
     });
     return response.data;
+}
+
+export async function getMe() {
+    const { data } = await nextServer.get<User>('users/me');
+    return data;
+}
+
+
+type CheckSessionRequest = {
+    success: boolean;
+}
+export async function checkSession() {
+    const response = await nextServer.get<CheckSessionRequest>('/auth/session');
+    return response.data.success;
 }
