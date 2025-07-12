@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import css from './ProfilePage.module.css';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -33,15 +33,15 @@ export default function ProfilePage() {
             Edit Profile
           </Link>
         </div>
-        <div className={css.avatarWrapper}>
+        {/* <div className={css.avatarWrapper}>
           <Image
-            src="Avatar"
+            src="https://www.picsum.photos"
             alt="User Avatar"
             width={120}
             height={120}
             className={css.avatar}
           />
-        </div>
+        </div> */}
         <div className={css.profileInfo}>
           <p>Username: your_username</p>
           <p>Email: your_email@example.com</p>

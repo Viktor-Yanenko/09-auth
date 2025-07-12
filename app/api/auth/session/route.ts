@@ -40,8 +40,8 @@ export async function GET() {
             if (refreshToken) {
                 cookieStore.set('refreshToken', refreshToken)
             }
-            return NextResponse.json({})
+            return NextResponse.json({success: true})
         }
     }
-    return NextResponse.json({})
+    return NextResponse.json({success: false})
 }

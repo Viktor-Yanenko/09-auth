@@ -144,24 +144,7 @@ export async function fetchNoteById(id: number, token?: string): Promise<Note> {
     return response.data;
 }
 
-export async function getMe(token?: string) {
-    const { data } = await nextServer.get<User>('users/me', {
-        headers: createHeaders(token),
-    });
-    return data;
-}
 
-
-type CheckSessionRequest = {
-    success: boolean;
-}
-
-export async function checkSession(token?: string) {
-    const response = await nextServer.get<CheckSessionRequest>('/auth/session', {
-        headers: createHeaders(token),
-    });
-    return response.data.success;
-}
 
 export type RegisterRequest = {
     email: string;
@@ -173,4 +156,40 @@ export async function register(data: RegisterRequest, token?: string) {
         headers: createHeaders(token)
     });
     return res.data;
+}
+
+export type LoginRequest = {
+    email: string;
+    password: string;
+}
+
+export const login = async (data: LoginRequest) => {
+    const res = await nextServer.post<User>('/auth/login', data);
+    return res.data;
+}
+
+type CheckSessionRequest = {
+    success: boolean;
+}
+
+export async function checkSession(token?: string) {
+    try {
+        const response = await nextServer.get<CheckSessionRequest>('/auth/session', {
+            headers: createHeaders(token),
+        });
+        return response.data.success === true;
+    } catch {
+        return false
+    }
+}
+
+export async function getMe(token?: string) {
+    const { data } = await nextServer.get<User>('users/me', {
+        headers: createHeaders(token),
+    });
+    return data;
+}
+
+export async function logout(): Promise<void> {
+    await nextServer.post('/auth/logout')
 }
