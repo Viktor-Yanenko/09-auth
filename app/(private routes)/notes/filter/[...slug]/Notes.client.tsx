@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { fetchNotes } from '../../../../lib/api';
+import { fetchNotes } from '../../../../lib/api/api';
 import NoteList from '../../../../components/NoteList/NoteList';
 import Pagination from '../../../../components/Pagination/Pagination';
 import SearchBox from '../../../../components/SearchBox/SearchBox';

@@ -1,13 +1,14 @@
-export type NoteTag = 'Todo' | 'Work' | 'Personal' | 'Meeting' | 'Shopping';
+export type NoteTag = 'Work' | 'Personal' | 'Meeting' | 'Shopping' | 'Ideas' | 'Travel' | 'Finance' | 'Health' | 'Important' | 'Todo';
 
-export const NOTE_TAGS: NoteTag[] = ['Todo', 'Work', 'Personal', 'Meeting', 'Shopping', ]
+export const NOTE_TAGS: NoteTag[] = ['Work', 'Personal', 'Meeting', 'Shopping', 'Ideas', 'Travel', 'Finance', 'Health', 'Important', 'Todo' ]
 
 export interface Note {
-    id: number;
+    id: string;
     title: string;
     content: string;
     createdAt: string;
     updatedAt: string;
+    userId: string;
     tag: NoteTag;
 }
 

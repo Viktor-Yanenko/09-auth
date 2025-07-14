@@ -4,7 +4,7 @@ import {
   QueryClient,
   dehydrate,
 } from '@tanstack/react-query';
-import { fetchNoteById } from '../../../../lib/api';
+import { fetchNoteById } from '../../../../lib/api/api';
 
 interface Props {
   params: Promise<{ id: string }>;
