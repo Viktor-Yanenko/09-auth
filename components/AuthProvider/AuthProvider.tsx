@@ -14,17 +14,22 @@ const AuthProvider = ({ children }: Props) => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const isAuth = await checkSession();
-      if (isAuth) {
-        const user = await getMe();
-        if (user) setUser(user);
-      } else {
+      try {
+        const isAuth = await checkSession();
+        if (isAuth) {
+          const user = await getMe();
+          if (user) setUser(user);
+        } else {
+          clearIsAuth();
+        }
+      } catch {
         clearIsAuth();
       }
     };
     fetchUser();
   }, [setUser, clearIsAuth]);
-  return children;
+
+  return <>{children}</>;
 };
 
 export default AuthProvider;
