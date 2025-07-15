@@ -12,18 +12,6 @@ interface NoteListProps {
   notes: Note[];
 }
 
-// const showErrorToast = async () => {
-//   const iziToast = (await import('izitoast')).default;
-//   iziToast.error({
-//     title: 'Error',
-//     message: 'Failed to delete note. Please try again.',
-//     position: 'topRight',
-//     messageColor: '#ffffff',
-//     messageSize: '16px',
-//     backgroundColor: '#ef4040',
-//   });
-// };
-
 export default function NoteList({ notes }: NoteListProps) {
   const queryClient = useQueryClient();
 
@@ -32,9 +20,6 @@ export default function NoteList({ notes }: NoteListProps) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notes'] });
     },
-    // onError: () => {
-    //   showErrorToast();
-    // },
     onError: () => {
       iziToast.error({
         title: 'Error',

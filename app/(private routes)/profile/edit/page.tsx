@@ -40,11 +40,12 @@ export default function EditProfilePage() {
         <h1 className={css.formTitle}>Edit Profile</h1>
 
         <Image
-          src={user?.avatar ?? '/'}
+          src={'/avatar.png'}
           alt="User Avatar"
           width={120}
           height={120}
           className={css.avatar}
+          loading='lazy'
         />
 
         <form className={css.profileInfo} onSubmit={handleSaveUser}>
