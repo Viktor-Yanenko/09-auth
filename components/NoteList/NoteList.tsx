@@ -3,7 +3,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import css from './NoteList.module.css';
 import type { Note } from '../../types/note';
-import { deleteNote } from '../../lib/api/api';
+import { deleteNote } from '../../lib/api/clientApi';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import Link from 'next/link';
@@ -12,14 +12,29 @@ interface NoteListProps {
   notes: Note[];
 }
 
+// const showErrorToast = async () => {
+//   const iziToast = (await import('izitoast')).default;
+//   iziToast.error({
+//     title: 'Error',
+//     message: 'Failed to delete note. Please try again.',
+//     position: 'topRight',
+//     messageColor: '#ffffff',
+//     messageSize: '16px',
+//     backgroundColor: '#ef4040',
+//   });
+// };
+
 export default function NoteList({ notes }: NoteListProps) {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (id: number) => deleteNote(id),
+    mutationFn: (id: string) => deleteNote(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notes'] });
     },
+    // onError: () => {
+    //   showErrorToast();
+    // },
     onError: () => {
       iziToast.error({
         title: 'Error',

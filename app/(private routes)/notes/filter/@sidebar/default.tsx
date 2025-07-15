@@ -1,5 +1,5 @@
 import css from './NotesSidebar.module.css';
-import { NOTE_TAGS } from '../../../../types/note';
+import { NOTE_TAGS } from '../../../../../types/note';
 import Link from 'next/link';
 
 export default async function NotesSidebar() {

@@ -34,7 +34,7 @@ export async function fetchNotes(searchQuery: string, page: number, tag?: string
     return response.data;
 }
 
-export async function deleteNote(noteId: number): Promise<Note> {
+export async function deleteNote(noteId: string): Promise<Note> {
     const response = await nextServer.delete<Note>(`/notes/${noteId}`)
     return response.data;
 }
@@ -44,7 +44,7 @@ export async function createNote(noteData: NewNoteData): Promise<Note> {
     return response.data;
 }
 
-export async function fetchNoteById(id: number): Promise<Note> {
+export async function fetchNoteById(id: string): Promise<Note> {
     const response = await nextServer.get<Note>(`/notes/${id}`);
     return response.data;
 }

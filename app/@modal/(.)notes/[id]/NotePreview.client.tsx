@@ -3,13 +3,14 @@
 import css from './NotePreview.module.css';
 import { useRouter } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
-import { fetchNoteById } from '../../../../lib/api/api';
+import { fetchNoteById } from '../../../../lib/api/clientApi';
 import { useCallback } from 'react';
 import Modal from '../../../../components/Modal/Modal';
 
 interface NotePreviewProps {
-  id: number;
+  id: string;
 }
+
 export default function NotePreview({ id }: NotePreviewProps) {
   const router = useRouter();
   const handleClose = useCallback(() => router.back(), [router]);
