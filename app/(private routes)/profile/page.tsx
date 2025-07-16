@@ -37,12 +37,12 @@ export default async function ProfilePage() {
         </div>
         <div className={css.avatarWrapper}>
           <Image
-            src="/avatar.png"
+            src={user.avatar || '/avatar.png'}
             alt="User Avatar"
             width={120}
             height={120}
             className={css.avatar}
-            loading='lazy'
+            loading="lazy"
           />
         </div>
         <div className={css.profileInfo}>
